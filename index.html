@@ -10,10 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Nunito';
+            src: url('./font/Nunito-Regular.ttf') format('ttf');
+            font-weight: 400;
+            font-style: normal;
+        }
         body{
             background-color: #ffffff;
+            font-family: Nunito, sans-serif, Arial;
         }
-     .sidebars{
+       .sidebars{
             box-sizing: inherit;
             color: white;
             display: flex;
@@ -31,7 +38,7 @@
                 background: rgba(255, 255, 255, 0) !important;
             }
             .n:hover{
-                background: #5661e2 !important;
+                background: #ffffff33 !important;
               
             }
             .n::after{
@@ -64,14 +71,14 @@
 </head>
 <body>
     <div class="sidebars">
-        <div id="innerSidebar" class="h-100 shadow" style=" border-radius: 1.5rem; width: 270px; background-color: #4652E5;">
+        <div id="innerSidebar" class="h-100 shadow" style=" border-radius: 1rem; width: 270px; background-color: #3f404f;">
             <div class="m-2">
                 <div id="brand" class="x p-4">
                     <h1 class="text-white"><a class="link-light text-decoration-none" href="http://">
                         VovZier
                     </a></h1>
                 </div>
-                <div id="listMenu" class="w-100 p-2 overflow-auto" style="">
+                <div id="listMenu" class="w-100 p-2 overflow-auto" >
     
                     <a class="n btn btn-dark btn-md w-100 mt-1 shadow-none rounded-3 border-0 text-start bg-transparent"data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                         <i class="mdi mdi-view-dashboard" aria-hidden="true"></i> Dashboard
@@ -177,10 +184,24 @@
             </div>
         </div>
     </div>
-    <div id="main-content" class="x" style="margin-left: 310px;padding-top: 20px; padding-bottom:20px">
-        <div class="container">
-            <div class="card">
-                sdf
+    <div id="main-content" class="x" style="margin-left: 310px;padding-top: 20px; padding-bottom:20px;padding-right: 10px;">
+        <div class="container-fluid p-0 me-2">
+            <div class="pb-3">
+                <h4 style="color: #3f404f;">Dashboard</h4>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card border-0 shadow p-2" style="border-radius: 10px;">
+                            <div class="flex-row">
+                                <div class="rounded-circle" style="background-color:rgb(190, 167, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                                    <i class="text-white mdi mdi-eye h3"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
         </div>
     </div>
@@ -196,7 +217,6 @@
 
         window.visualViewport.addEventListener("resize",function(){
             ChangeHeigth()
-    
         })
     </script>
 </body>
