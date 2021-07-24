@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./mdiIcon/css/materialdesignicons.css">
+    <link href="./mdiIcon/fonts/materialdesignicons-webfont.ttf" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Nunito';
@@ -33,6 +34,15 @@
             top: 0;
             width: auto;
             z-index: 1030;
+        }
+        .btn-primary{
+            background-color:  rgb(120, 71, 255) !important;
+            box-shadow: none !important;
+            border: none !important;
+        }
+        .btn:focus {
+             outline: none !important;
+            box-shadow: none !important;
         }
         .vavozortext{
             color: #3f404f;
@@ -76,20 +86,60 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+
+        /* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+
+@media (max-width: 767px) {
+     .sidebars{
+         visibility: collapse;
+     }
+     #main-content{
+         margin-left: 10px !important;
+     }
+     #close{
+         visibility: visible;
+     }
+     #opt{
+         visibility: collapse;
+     }
+}
+@media (min-width: 767px) {
+     .sidebars{
+         visibility: visible;
+     }
+     #main-content{
+         margin-left: 310px !important;
+     }
+     .mobile-menu{
+         visibility: collapse;
+     }
+     #close{
+         visibility: collapse;
+     }
+     #opt{
+         visibility: visible;
+     }
+}
+
+
     </style>
 </head>
 <body>
-    <div class="sidebars">
+    <div class="sidebars ">
         <div id="innerSidebar" class="h-100 shadow" style=" border-radius: 1rem; width: 270px; background-color: #3f404f;">
-            <div class="m-2">
+            <div id="innerSidebarinner" class="m-2">
                 <div id="brand" class="x p-4">
                     <div class="">
                         <div class="d-flex justify-content-end">
                             <div class="pe-2">
-                                <i class="mdi mdi-cog h6 " style="cursor: pointer;"></i>
+                                <i id="opt" class="mdi mdi-cog h6 " style="cursor: pointer;"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
                             </div>
                             <div>
-                                <i class="mdi mdi-close  h6 " style="cursor: pointer;"></i>
+                                <i id="close" class="mdi mdi-close  h6 " style="cursor: pointer; " data-bs-toggle="modal" data-bs-target="#popupSidebar"></i>
                             </div>
                         </div>
                     </div>
@@ -211,10 +261,10 @@
             </div>
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-4 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
-                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-3 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
                                     <i class="text-white mdi mdi-eye h3 p-0 m-0 "></i>
                                 </div>
                                 <div class="d-flex flex-column justify-content-center" style="height:50px;">
@@ -224,10 +274,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-4 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
-                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-3 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
                                     <i class="text-white mdi mdi-package-variant-closed h3 p-0 m-0 "></i>
                                 </div>
                                 <div class="d-flex flex-column justify-content-center" style="height:50px;">
@@ -237,10 +287,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-4 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
-                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-3 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
                                     <i class="text-white mdi mdi-buffer h3 p-0 m-0 "></i>
                                 </div>
                                 <div class="d-flex flex-column justify-content-center" style="height:50px;">
@@ -250,10 +300,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-4 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
-                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-3 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
                                     <i class="text-white mdi mdi-file-document h3 p-0 m-0 "></i>
                                 </div>
                                 <div class="d-flex flex-column justify-content-center" style="height:50px;">
@@ -268,10 +318,49 @@
         </div>
     </div>
 
-    <div id="fixedbtn">
-        <div class="fixedButton p-2" style="right: 0px;">
-            <div class="rounded-circle bg-primary" style="width: 30px;height:30px"></div>
-        </div>
+    <div id="modal">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content border-0 text-white" style="border-radius: 10px;background-color: #3f404f;">
+                <div class="modal-header border-0">
+                  <h5 class="modal-title text-white" id="staticBackdropLabel">Settings</h5>
+                  <i class="mdi mdi-close text-white"  data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer;"></i>
+                </div>
+                <div class="modal-body border-0">
+                  ...
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="btn btn-secondary" title="Reset settings"><i class="mdi mdi-refresh"></i></button>
+                  <button type="button" class="btn btn-primary" title="Save settings"><i class="mdi mdi-content-save"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal fade m-0 p-0" style="z-index:99999" id="popupSidebar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content border-0 text-white" style="border-radius: 10px;background-color: #3f404f;">
+                <div id="bodyCardpop" class="modal-body border-0">
+                  ...
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <div  class="mobile-menu p-2 w-100 d-flex bg-white justify-content-center align-content-center" style="z-index:9999; position: fixed; left: 0; bottom: 0;border-top: 1px solid #dee2e6 !important; ">
+       <div class="mobile-menu d-flex flex-row justify-content-center align-content-center">
+            <div class="mx-2">
+                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center border flex-fill" style=" width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                    <i class="mdi mdi-menu h3 p-0 m-0 " style="color: #3f404f; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#popupSidebar"></i>
+                </div>
+            </div>
+            <div class="mx-2">
+                <div class="rounded-circle d-flex flex-column justify-content-center align-content-center border flex-fill" style=" width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
+                    <i class="mdi mdi-cog h3 p-0 m-0 " style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+                </div>
+            </div>
+       </div>
     </div>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script>
@@ -286,6 +375,9 @@
         window.visualViewport.addEventListener("resize",function(){
             ChangeHeigth()
         })
+        let innerSidebar = document.getElementById('innerSidebarinner').outerHTML
+        let c = document.getElementById('bodyCardpop').innerHTML = innerSidebar
+
     </script>
 </body>
 </html>
