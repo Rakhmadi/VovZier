@@ -101,7 +101,7 @@
          visibility: collapse;
      }
      #main-content{
-         margin-left: 10px !important;
+         margin-left: 20px !important;
      }
      #close{
          visibility: visible;
@@ -116,6 +116,7 @@
      }
      #main-content{
          margin-left: 310px !important;
+        
      }
      .mobile-menu{
          visibility: collapse;
@@ -135,7 +136,7 @@
     <div class="sidebars ">
         <div id="innerSidebar" class="h-100 shadow" style=" border-radius: 1rem; width: 270px; background-color: #3f404f;">
             <div id="innerSidebarinner" class="m-2">
-                <div id="brand" class="x p-4">
+                <div id="brand" class="x p-4 pt-0 pt-lg-4 pb-0 pb-lg-4 ">
                     <div class="">
                         <div class="d-flex justify-content-end">
                             <div class="pe-2">
@@ -407,7 +408,11 @@
           <div class="modal fade m-0 p-0" style="z-index:99999" id="popupSidebar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content border-0 text-white" style="border-radius: 10px;background-color: #3f404f;">
-                <div id="bodyCardpop" class="modal-body border-0">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title text-white" id="staticBackdropLabel"></h5>
+                    <i class="mdi mdi-close text-white"  data-bs-dismiss="modal" aria-label="Close" style="cursor: pointer;"></i>
+                  </div>
+                <div id="bodyCardpop" class="modal-body border-0 pt-0">
                   ...
                 </div>
               </div>
