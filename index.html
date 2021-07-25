@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="./mdiIcon/css/materialdesignicons.css">
     <link href="./mdiIcon/fonts/materialdesignicons-webfont.ttf" rel="stylesheet">
+    <link rel="stylesheet" href="./apex-chart/dist/apexcharts.css">
     <style>
         @font-face {
             font-family: 'Nunito';
@@ -61,7 +62,7 @@
                 float: right;
                 
             }
-            .fixedButton{
+.fixedButton{
     position: fixed;
     bottom: 0px;
     right: 0px; 
@@ -77,14 +78,14 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #d6dee1;
+  background-color: #dcdcdc;
   border-radius: 20px;
   border: 6px solid transparent;
   background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #a8bbbf;
+  background-color: #bfbfbf;
 }
 
         /* custom scrollbar */
@@ -92,7 +93,9 @@
   width: 20px;
 }
 
-
+.vovzier-shadow{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px !important;
+}
 @media (max-width: 767px) {
      .sidebars{
          visibility: collapse;
@@ -138,8 +141,8 @@
                             <div class="pe-2">
                                 <i id="opt" class="mdi mdi-cog h6 " style="cursor: pointer;"  data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
                             </div>
-                            <div>
-                                <i id="close" class="mdi mdi-close  h6 " style="cursor: pointer; " data-bs-toggle="modal" data-bs-target="#popupSidebar"></i>
+                            <div id="close" >
+                                <i class="mdi mdi-close  h6 " style="cursor: pointer; " data-bs-toggle="modal" data-bs-target="#popupSidebar"></i>
                             </div>
                         </div>
                     </div>
@@ -260,8 +263,8 @@
                 <h4 style="color: #3f404f;">Dashboard</h4>
             </div>
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-md-4 col-lg-3 mb-2">
+                <div class="row px-2">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
                                 <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
@@ -274,7 +277,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
                                 <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
@@ -287,7 +290,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
                                 <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
@@ -300,7 +303,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4 col-lg-3 mb-2">
+                    <div class="col-12 col-md-6 col-lg-3 mb-2">
                         <div class="card border-0 p-2 py-3 d-flex flex-row align-content-center" style="border-radius: 10px; box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 12px;">
                             <div class="d-flex flex-row justify-content-center align-content-center">
                                 <div class="rounded-circle d-flex flex-column justify-content-center align-content-center me-2 flex-fill" style="background-color:rgb(120, 71, 255);width: 50px; height:50px;display:table-cell;vertical-align: middle; text-align: center;text-decoration: none">
@@ -314,10 +317,74 @@
                         </div>
                     </div>
                 </div>
+                <div class="row p-2">
+                    <div class="col-12 col-md-12 col-lg-6 mb-4">
+                        <h5>Invoice Statistic</h5>
+                        <div class="card vovzier-shadow border-0 p-2">
+                            <div class="m-2" id="chart"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12 col-lg-6 mb-4 ">
+                        <h5>Invoice</h5>
+                        <div class="card vovzier-shadow border-0 p-4 overflow-auto" style="height: 327px;">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">First</th>
+                                    <th scope="col">Last</th>
+                                    <th scope="col">Handle</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">1</th>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">3</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">4</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">2</th>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                  </tr>
+                                  
+
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    
     <div id="modal">
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -363,6 +430,51 @@
        </div>
     </div>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="./apex-chart/dist/apexcharts.js"></script>
+    <script>
+        var options = {
+chart: {
+height: 280,
+type: "area"
+},
+dataLabels: {
+enabled: false
+},
+series: [
+{
+  name: "Series 1",
+  data: [45, 52, 38, 45, 19, 23, 2]
+}
+],
+fill: {
+type: "solid",
+colors: ['#7847FF', '#7847FF']
+},
+stroke: {
+    show: true,
+    curve: 'smooth',
+    lineCap: 'butt',
+    colors: undefined,
+    width: 0,
+    dashArray: 0,      
+},
+xaxis: {
+categories: [
+  "01 Jan",
+  "02 Jan",
+  "03 Jan",
+  "04 Jan",
+  "05 Jan",
+  "06 Jan",
+  "07 Jan"
+]
+}
+};
+
+var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+chart.render();
+    </script>
     <script>
 
         function ChangeHeigth() {
